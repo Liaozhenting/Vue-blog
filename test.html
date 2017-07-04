@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <script>
+        var domlist=document.querySelectorAll('div');
+        console.log(domlist);
+        var arr=[1,2];
+        var domArr=arr.slice.call(domlist);
+        console.log(domArr);
+        var falArr={0:'ss',1:'asd',name:"伪数组",length:2};
+        var obj={name:'ojb'};
+        var num=2;
+        console.log(arr.shift.call(falArr));
+        console.log(domlist.toString);
+        console.log(Object.prototype.toString.call(domlist));
+        console.log(falArr);
+    </script>
+</body>
