@@ -18,6 +18,7 @@ const routes = [
 {
   path: '/acount',
   component:acount ,
+  waitForData: true,
   meta: {
     title:'账号管理'
   }
