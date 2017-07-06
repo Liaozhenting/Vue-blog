@@ -5,6 +5,8 @@ import index from '../components/index.vue'
 import acount from '../components/acount.vue'
 import todo from '../components/todo.vue'
 import word from '../components/word.vue'
+import blogsManager from '../components/blogs/blogsManager.vue'
+
 Vue.use(VueRouter)
 // Vue.use(axios)
 const routes = [
@@ -33,6 +35,13 @@ const routes = [
 {
   path: '/word',
   component:word ,
+  meta: {
+    title:'word'
+  }
+},
+{
+  path: '/blogsManager',
+  component:blogsManager ,
   meta: {
     title:'word'
   }

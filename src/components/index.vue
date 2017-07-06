@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h2>欢迎使用博客管理系统（测试版）</h2>
-    <a href="/#acount">账号管理</a>
-    <a href=""></a>
+    <div class="banxin">
+      <h2>欢迎使用博客管理系统（测试版）</h2>
+      <a href="/#acount" class="btn"><el-button>账号管理</el-button></a>
+    </div>
+
+
   </div>
 </template>
 
@@ -27,4 +30,10 @@
   h2{
     text-align:center;
   }
+  .banxin{
+    width:1200px;
+    margin:0 auto;
+    text-align:center;
+  }
+
 </style>

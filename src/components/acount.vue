@@ -1,5 +1,6 @@
 <template>
   <div>
+    <a href="/" ><el-button>返回主页</el-button></a>
     <!-- <div class="btn btn-default">{{items[0]}}</div> -->
     <table >
       <tr>
@@ -11,17 +12,26 @@
         <td>注册时间</td>
       </tr>
       <tr v-for='item in items'>
-        <td><input type="text" v-model='item.user_id' disabled="true" /></td>
-        <td><input type="text" v-model='item.username' disabled="true" /></td>
-        <td><input type="text" v-model='item.password'/></td>
-        <td><input type="text" v-model='item.question'/></td>
-        <td><input type="text" v-model='item.answer'/></td>
-        <td><input type="text" v-model='item.regtime' disabled="true" /></td>
-        <td><input type="button" value="修改" @click='edit(item)'></td>
-        <td><input type="button" value="删除" @click='del(item)'></td>
+        <td><el-input v-model='item.user_id' :disabled="true" ></el-input></td>
+        <td><el-input v-model='item.username' :disabled="true" ></el-input></td>
+        <td><el-input v-model='item.password'></el-input></td>
+        <td><el-input v-model='item.question'></el-input></td>
+        <td><el-input v-model='item.answer'></el-input></td>
+        <td><el-input v-model='item.regtime' :disabled="true" ></el-input></td>
+        <td><el-button  @click='edit(item)'><i class="el-icon-edit"></i></el-button></td>
+        <td><el-button @click='del(item)'><i class="el-icon-delete" ></i></el-button></td>
       </tr>
 
     </table>
+    <div class="fenye">
+      <div class="block">
+        <el-pagination
+          layout="prev, pager, next"
+          :total="600">
+        </el-pagination>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -48,28 +58,43 @@
         }
       },
       methods:{
-        edit:(item)=>{
+        edit:function(item){
+          var that=this;
           axios.get('http://localhost:3000/edit',{params:item})
         //成功的回调
         .then( (response) =>{
-          alert(response.data);
+          this.open(response.data);
+
         },(err)=>{
           console.log(err);
         });
       },
-      del:(item)=>{
+      del:function(item){
         axios.get('http://localhost:3000/delete',{params:{user_id:item.user_id}})
         //成功的回调
         .then( (response) =>{
-          alert(response.data);
+          this.open(response.data);
         },(err)=>{
           console.log(err);
+        });
+      },
+
+      open:function(){
+
+        this.$message({
+          message: '操作成功',
+          type: 'success'
         });
       }
     }
   }
 </script>
-
+<style>
+  .fenye{
+    width:400px;
+    margin:0 auto;
+  }
+</style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 
